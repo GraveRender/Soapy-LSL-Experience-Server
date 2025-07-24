@@ -1,0 +1,18 @@
+// Place this script in an object located in an easily identifiable location
+// Clicking this object will allow avatars that have either denied experience permissions or did not have a free attachment slot to re-attempt a HUD attachment
+default
+{
+state_entry()
+    {
+        llSetText("
+Experience Required For Combat
+[ Click Here to Enable ]", <0.594, 0.460, 0.884>, 1.5);
+    }
+    touch_start(integer total_number)
+    {
+        llRegionSay(-5722745,llList2Json(JSON_OBJECT,[
+            "command", "clear",
+            "agent", (string)llDetectedKey(0)
+        ]));
+    }
+}
